@@ -49,3 +49,8 @@ But if you scroll like a maniac, then the recycling can't be done in time and so
 If I understood it correctly, then there are a specific amount of views in the cache.  
 And if the list is scrolled really fast and it requests for more views than what are currently in the cache, then new ones will be created/inflated from the recycledPool.  
 Meanwhile the views which got pushed out of the display are being recycled and put into the cache for later usage. And when there are too many views in the cache, then it will push those back into the recycledPool.
+  
+### The RecyclerView-Lifecycle:  
+This image is from an AndroidDeveloper-YouTube-Video: https://www.youtube.com/watch?v=LqBlYJTfLP4
+  
+<img src="https://github.com/BeatingAngel/UdacityAndroidChallenge/blob/master/Notes-images/Lesson03/androidIO-recyclerViewLifecycle.png?raw=true" alt="RecyclerView lifecycle" height="300"/>
