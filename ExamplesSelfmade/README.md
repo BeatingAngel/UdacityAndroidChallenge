@@ -24,3 +24,4 @@ In order that an element can span over multiple columns, a SpanSizeLookUp is nee
 The getSpanSize-Method requests the columnSpanSize with a position.  
 For example how broad is the 9th element in the dataList?
 
+A further explanation will follow shortly later . . .
