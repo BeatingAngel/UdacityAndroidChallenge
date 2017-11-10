@@ -15,3 +15,16 @@ https://github.com/BeatingAngel/UdacityAndroidChallenge/tree/master/Lesson03-Gre
 Smooth scroll recycle      |  Maniac scroll recycle
 :-------------------------:|:-------------------------:
 <img src="https://github.com/BeatingAngel/UdacityAndroidChallenge/blob/master/Notes-images/Lesson03/RecyclerView-smoothScroll.png?raw=true" alt="RecyclerView on smooth scrolling" height="300"/>  |  <img src="https://github.com/BeatingAngel/UdacityAndroidChallenge/blob/master/Notes-images/Lesson03/RecyclerView-maniacScroll.png?raw=true" alt="RecyclerView on maniac scrolling" height="300"/>
+
+## Selfmade example for RecyclerView:
+
+GridLayout Scroll      |  GridLayout (show grid)
+:-------------------------:|:-------------------------:
+<img src="https://github.com/BeatingAngel/UdacityAndroidChallenge/blob/master/Notes-images/ExamplesSelfmade/StartView.png?raw=true" alt="RecyclerView (Grid) on Start" height="300"/>  |  <img src="https://github.com/BeatingAngel/UdacityAndroidChallenge/blob/master/Notes-images/ExamplesSelfmade/StartViewLayout.png?raw=true" alt="RecyclerView (Grid) show grid" height="300"/>
+
+This project shows how to create a RecyclerView with items of different sizes.  
+For example when you want to display a list of books and categorize them by genre.  
+The genre-item will span over 3 columns of the grid and books take up only one column.  
+
+Have a look at the **explanation and the entire project (code) here:**  
+https://github.com/BeatingAngel/UdacityAndroidChallenge/tree/master/ExamplesSelfmade
