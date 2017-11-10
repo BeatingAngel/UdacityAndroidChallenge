@@ -1,11 +1,26 @@
-# Sunshine!
+# Book Inventory
+The aim of this project is to explore the RecyclerView with a GridLayoutManager and display different items (layouts) with different sizes in a list.
 
-This is the repository for the weather app that students build during the [Developing Android Apps](https://www.udacity.com/course/new-android-fundamentals--ud851) course at Udacity.
+## Result:
+GridLayout Scroll      |  GridLayout (show grid)
+:-------------------------:|:-------------------------:
+<img src="https://github.com/BeatingAngel/UdacityAndroidChallenge/blob/master/Notes-images/ExamplesSelfmade/StartView.png?raw=true" alt="RecyclerView (Grid) on Start" height="300"/>  |  <img src="https://github.com/BeatingAngel/UdacityAndroidChallenge/blob/master/Notes-images/ExamplesSelfmade/StartViewLayout.png?raw=true" alt="RecyclerView (Grid) show grid" height="300"/>
+<img src="https://github.com/BeatingAngel/UdacityAndroidChallenge/blob/master/Notes-images/ExamplesSelfmade/AfterScrollView.png?raw=true" alt="RecyclerView (Grid) after Scroll" height="300"/> | 
 
-To use this repository, fork/clone it, or download a zip using the green "Clone or download" button at the top of the file list. Each coding exercise in the course has starter code in a folder labeled like `S01.01-Exercise-CreateLayout`, and corresponding solution code labeled like `S01.01-Solution-CreateLayout`. The intended workflow is for you to open the starter code for each exercise in Android Studio, and complete each of the tasks labeled `TODO`. You can easily find all such tasks using the TODO pane at the bottom left of Android Studio.
+In order that an element can span over multiple columns, a SpanSizeLookUp is needed.
 
-When you're done, or if you run into any problems, you can open up the solution code in another Android Studio window, and compare our solution to what you've written!
+    int numberOfColumns = 3;
+    GridLayoutManager layoutManager = new GridLayoutManager(this, numberOfColumns);
 
-# Contributing
+    layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+        @Override
+        public int getSpanSize(int position) {
+            return mInventoryAdapter.getItemViewType(position);
+        }
+     });
 
-Because of the way this repository is constructed, pull requests don't really work. Issues, however, are gratefully accepted!
+     mGameInventory.setLayoutManager(layoutManager);
+
+The getSpanSize-Method requests the columnSpanSize with a position.  
+For example how broad is the 9th element in the dataList?
+
