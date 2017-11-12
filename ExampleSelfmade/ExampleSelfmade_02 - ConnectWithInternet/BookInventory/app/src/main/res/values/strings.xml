@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Book Inventory</string>
+    <string name="book_genre_title">Book Genre Title</string>
+    <string name="background_for_genre">Background for genre</string>
+    <string name="book_title">Book title</string>
+    <string name="book_cover_description">Image of the book cover</string>
+</resources>
