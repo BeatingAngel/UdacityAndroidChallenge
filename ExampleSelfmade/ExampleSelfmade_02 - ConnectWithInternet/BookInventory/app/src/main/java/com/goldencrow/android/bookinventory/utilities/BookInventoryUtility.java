@@ -28,16 +28,22 @@ public class BookInventoryUtility {
 
     private static final String TAG = BookInventoryUtility.class.getSimpleName();
 
+    /**
+     * HTTP://       is how every URL starts.
+     * gravitytales.com  is a cool website to read novels.
+     * api      is where the books are from.
+     * novels    are books, so I used them as an example to display.
+    */
     private static final Uri BASE_API_NOVEL_URI =
-            Uri.parse("http://gravitytales.com/api/novels/");
+            Uri.parse("search for an API-URL and use it here.");
 
     /**
-     * Return a list of all books from the website GravityTales.
+     * Return a list of all books from the website.
      * (This also includes the GenreTitles)
      *
      * @return  a list of all books (and genreTitles).
      */
-    public static List<Book> getWebNovelsFromGravityTales() {
+    public static List<Book> getWebNovelsFromAPI() {
         try {
             // URL to the API which return all books.
             URL apiURL = new URL(BASE_API_NOVEL_URI.toString());
