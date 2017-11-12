@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected List<Book> doInBackground(InventoryAdapter... adapters) {
             this.adapter = adapters[0];
-            return BookInventoryUtility.getWebNovelsFromGravityTales();
+            return BookInventoryUtility.getWebNovelsFromAPI();
         }
 
         @Override
