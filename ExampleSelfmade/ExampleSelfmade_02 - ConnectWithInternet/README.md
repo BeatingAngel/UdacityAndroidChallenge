@@ -1,11 +1,30 @@
-# Sunshine!
+# Connect to the internet!
 
-This is the repository for the weather app that students build during the [Developing Android Apps](https://www.udacity.com/course/new-android-fundamentals--ud851) course at Udacity.
+The app looks rather dull with dummy data.  
+In this project, data from an API will be read and used to display as books.  
 
-To use this repository, fork/clone it, or download a zip using the green "Clone or download" button at the top of the file list. Each coding exercise in the course has starter code in a folder labeled like `S01.01-Exercise-CreateLayout`, and corresponding solution code labeled like `S01.01-Solution-CreateLayout`. The intended workflow is for you to open the starter code for each exercise in Android Studio, and complete each of the tasks labeled `TODO`. You can easily find all such tasks using the TODO pane at the bottom left of Android Studio.
+Before      |  After
+:-------------------------:|:-------------------------:
+<img src="https://github.com/BeatingAngel/UdacityAndroidChallenge/blob/master/Notes-images/ExamplesSelfmade/StartView.png?raw=true" alt="RecyclerView (Grid) on Start" height="300"/>  |  <img src="https://github.com/BeatingAngel/UdacityAndroidChallenge/blob/master/Notes-images/ExamplesSelfmade/newUI-View.png?raw=true" alt="RecyclerView (Grid) show grid" height="300"/>
+  
+## What is interesting in this project?  
 
-When you're done, or if you run into any problems, you can open up the solution code in another Android Studio window, and compare our solution to what you've written!
+**Topics like:**  
+I can't display the book-cover in the main thread because it uses the network. So the idea of moving that task into a new asyncTask comes to mind. But no! The imageView can only be edited by its creator. So how can we display it?  
+Solution: method called runOnUiThread()  
+  
+How do I make the text semi transparent over the book?  
+Solution: change the alpha value.  
+Example: normal color code for black (#000000) and one for 80% transparence (#CC000000).
 
-# Contributing
+AsyncTasks should be static in order to prevent leaks. But how do I do this?  
+Pass every variable the task uses as a variable to it.  
+But what if the variable have different types? I can't put different types here: AsyncTask<Parameters, Progress, Result>  
+Solution: create a new class which stores all thore variables and pass the helperClass as a parameter.  
+A example is in the Adapter-class of this project.  
+  
+# IMPORTANT NOTE:  
+## The API used for this is an example for SELFUSE-ONLY. Please use the website to read the novels and not the API or app.
+I only used this API because it was the only one I knew about which stores links to book-images.
 
-Because of the way this repository is constructed, pull requests don't really work. Issues, however, are gratefully accepted!
+## I also removed the API-URL so that it can't be misused.
