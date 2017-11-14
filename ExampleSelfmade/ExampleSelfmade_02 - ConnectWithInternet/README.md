@@ -23,8 +23,5 @@ But what if the variable have different types? I can't put different types here:
 Solution: create a new class which stores all thore variables and pass the helperClass as a parameter.  
 A example is in the Adapter-class of this project.  
   
-# IMPORTANT NOTE:  
-## The API used for this is an example for SELFUSE-ONLY. Please use the website to read the novels and not the API or app.
-I only used this API because it was the only one I knew about which stores links to book-images.
-
-## I also removed the API-URL so that it can't be misused.
+## Note:  
+I didn't use an API for the book-data because I haven't found a suitable one which I can use without copyright issues. (I can't use everyone, right? Right??)
