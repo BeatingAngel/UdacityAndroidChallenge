@@ -41,20 +41,23 @@ public class MainActivity extends AppCompatActivity {
 
         mRvBookInventory.setAdapter(mInventoryAdapter);
 
-        new BookFetcherAsyncTask().execute(mInventoryAdapter);
+        new BookFetcherAsyncTask(mInventoryAdapter).execute();
     }
 
     /**
      * fetches all information from the API which will be displayed.
      * The adapter was passed as a parameter so that this asyncTask can be static.
      */
-    static class BookFetcherAsyncTask extends AsyncTask<InventoryAdapter, Void, List<Book>> {
+    static class BookFetcherAsyncTask extends AsyncTask<Void, Void, List<Book>> {
 
         private InventoryAdapter adapter;
 
+        public BookFetcherAsyncTask(InventoryAdapter adapter) {
+            this.adapter = adapter;
+        }
+
         @Override
-        protected List<Book> doInBackground(InventoryAdapter... adapters) {
-            this.adapter = adapters[0];
+        protected List<Book> doInBackground(Void... voids) {
             return BookInventoryUtility.getWebNovelsFromAPI();
         }
 

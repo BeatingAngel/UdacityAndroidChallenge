@@ -61,12 +61,30 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Book
     public void onBindViewHolder(BookViewHolder bookViewHolder, int position) {
         Book book = mBooks.get(position);
 
-        bookViewHolder.itemText.setText(book.getName());
+        bookViewHolder.mItemText.setText(book.getName());
 
         if (book.getType() == BookType.BOOK_ITEM) {
-            new BookCoverAsyncTask().execute(
-                    new BookCoverAsyncTaskParameters(bookViewHolder.bookCover, book, mMainActivity)
+            bookViewHolder.mCoverTask = new BookCoverAsyncTask().execute(
+                    new BookCoverAsyncTaskParameters(bookViewHolder.mBookCover, book, mMainActivity)
             );
+        }
+    }
+
+    /**
+     * Kills a AsyncTask which is no longer needed.
+     * This is the case if the user scrolls really fast through the list.
+     *
+     * @param holder    the viewHolder which is used by the AsyncTask and got pushed out of the window.
+     */
+    @Override
+    public void onViewDetachedFromWindow(BookViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        if (holder.LAYOUT_ID == R.layout.inventory_list_book_item && holder.mCoverTask != null) {
+            if (holder.mCoverTask.getStatus() != AsyncTask.Status.FINISHED
+                    && !holder.mCoverTask.isCancelled()) {
+                holder.mCoverTask.cancel(true);
+                Log.i(TAG, "Cancel AsyncTask for: " + holder.mItemText.getText());
+            }
         }
     }
 
@@ -104,21 +122,23 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Book
      */
     class BookViewHolder extends RecyclerView.ViewHolder {
 
-        TextView itemText;
-        ImageView bookCover;
-        int layoutId;
+        TextView mItemText;
+        ImageView mBookCover;
+        final int LAYOUT_ID;
+
+        AsyncTask mCoverTask;
 
         private BookViewHolder(View itemView) {
             super(itemView);
 
-            layoutId = (int)itemView.getTag();
+            LAYOUT_ID = (int)itemView.getTag();
 
             // get the appropriate viewItems from the layout.
-            if (layoutId == R.layout.inventory_list_book_item) {
-                itemText = itemView.findViewById(R.id.tv_bookTitle);
-                bookCover = itemView.findViewById(R.id.iv_bookCover);
+            if (LAYOUT_ID == R.layout.inventory_list_book_item) {
+                mItemText = itemView.findViewById(R.id.tv_bookTitle);
+                mBookCover = itemView.findViewById(R.id.iv_bookCover);
             } else {
-                itemText = itemView.findViewById(R.id.tv_genreTitle);
+                mItemText = itemView.findViewById(R.id.tv_genreTitle);
             }
         }
 
@@ -129,6 +149,9 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Book
      * <p>
      * Why:
      * This class is needed to parse multiple parameters of different data-type to the asyncTask.
+     * This could have been made by using the constructor of BookCoverAsyncTask and set those
+     * variables as member variables. But mBookCover needs to be final and MainActivity shouldn't be
+     * a member variable because contextLeaks might occur then.
      * <p>
      * ALSO: Because every variable that the task uses are in here, the asyncTask-class can be
      * made STATIC which means that no leaks can occur (hopefully :D ).
@@ -153,18 +176,15 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Book
 
         @Override
         protected Void doInBackground(BookCoverAsyncTaskParameters... parameters) {
-            final ImageView bookCover = parameters[0].bookCover;
-            Book book = parameters[0].actualBook;
-            MainActivity mainActivity = parameters[0].mainActivity;
+            BookCoverAsyncTaskParameters paramClass = parameters[0];
+
+            final ImageView bookCover = paramClass.bookCover;
+            Book book = paramClass.actualBook;
+            MainActivity mainActivity = paramClass.mainActivity;
 
             URL url = null;
             try {
-                if (book.getImageName().equals("cover.png")) {
-                    // force into catch to display default cover.
-                    throw new IOException("There is no cover.");
-                }
-
-                url = new URL("https://cdn.gravitytales.com/images/covers/" + book.getImageName());
+                url = new URL(book.getImageUrl());
                 final Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
 
                 // runOnUiThread() is needed because a view can only be handled by its creator.

@@ -10,17 +10,13 @@ import com.goldencrow.android.bookinventory.entity.enums.BookType;
 public class Book {
 
     private BookType type;
-    private int apiId;
     private String name;
-    private String imageName;
-    private String slug;
+    private String imageUrl;
 
-    public Book(BookType type, int apiId, String name, String imageName, String slug) {
+    public Book(BookType type, String name, String imageUrl) {
         this.type = type;
-        this.apiId = apiId;
         this.name = name;
-        this.imageName = imageName;
-        this.slug = slug;
+        this.imageUrl = imageUrl;
     }
 
     //region Getter-Setter
@@ -33,14 +29,6 @@ public class Book {
         this.type = type;
     }
 
-    public int getApiId() {
-        return apiId;
-    }
-
-    public void setApiId(int apiId) {
-        this.apiId = apiId;
-    }
-
     public String getName() {
         return name;
     }
@@ -49,20 +37,12 @@ public class Book {
         this.name = name;
     }
 
-    public String getImageName() {
-        return imageName;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     //endregion
