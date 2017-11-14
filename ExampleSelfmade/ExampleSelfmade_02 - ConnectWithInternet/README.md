@@ -22,6 +22,11 @@ Pass every variable the task uses as a variable to it.
 But what if the variable have different types? I can't put different types here: AsyncTask<Parameters, Progress, Result>  
 Solution: create a new class which stores all thore variables and pass the helperClass as a parameter.  
 A example is in the Adapter-class of this project.  
+
+The AsyncTask loads the book-cover from the internet and displays it. But what if the user scrolls really
+fast, faster than the images can be displayed. The task still has the view because it was not deleted (only recycled).  
+So if the view comes again, then the old book-cover will be displayed because of the old (zombie) task.  
+The AsyncTask has to be canceled if the view leaves the window.
   
 ## Note:  
 I didn't use an API for the book-data because I haven't found a suitable one which I can use without copyright issues. (I can't use everyone, right? Right??)
