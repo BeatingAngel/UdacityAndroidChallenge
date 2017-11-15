@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    android:columnCount="2"
+    tools:context="com.goldencrow.android.blackraven.FightActivity">
+
+    <!-- ================================================================= -->
+    <!-- ====== / /                                              \ \ ===== -->
+    <!-- ======                      GUIDELINES                      ===== -->
+    <!-- ====== \ \                                              / / ===== -->
+    <!-- ================================================================= -->
+    <!-- ======  The guidelines are used to that constraint to       ===== -->
+    <!-- ======  specific percentages of the screen can exist.       ===== -->
+    <!-- ======                                                      ===== -->
+    <!-- ======  For example:                                        ===== -->
+    <!-- ======  The background-image should span down to 55% of the ===== -->
+    <!-- ======  screen.                                             ===== -->
+    <!-- ================================================================= -->
+
+    <!-- ================================================================= -->
+    <!-- ======                   VERTICAL guidelines                ===== -->
+    <!-- ================================================================= -->
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_half_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- ================================================================= -->
+    <!-- ======                   HORIZONTAL guidelines              ===== -->
+    <!-- ================================================================= -->
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_image_to_action_seperator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <!-- ================================================================= -->
+    <!-- ====== / /                                              \ \ ===== -->
+    <!-- ======                    FIGHTER NAMES                     ===== -->
+    <!-- ====== \ \                                              / / ===== -->
+    <!-- ================================================================= -->
+    <!-- ======  The linear layout is needed so that the             ===== -->
+    <!-- ======  imageView-background is positioned below the        ===== -->
+    <!-- ======  !largest textView! and not below only the right     ===== -->
+    <!-- ======  or left one with a constraint.                      ===== -->
+    <!-- ================================================================= -->
+
+
+    <LinearLayout
+        android:id="@+id/ll_names"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_self_name"
+            android:layout_width="@dimen/responsive_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.5"
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_half_screen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="My name" />
+
+        <TextView
+            android:id="@+id/tv_opponent_name"
+            android:layout_width="@dimen/responsive_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.5"
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline_half_screen"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Opponent name" />
+
+    </LinearLayout>
+
+    <!-- ================================================================= -->
+    <!-- ====== / /                                              \ \ ===== -->
+    <!-- ======                     FIGHT IMAGES                     ===== -->
+    <!-- ====== \ \                                              / / ===== -->
+    <!-- ================================================================= -->
+    <!-- ======  Displays the background image and the images of     ===== -->
+    <!-- ======  the monsters. The monster images will be on top of  ===== -->
+    <!-- ======  the background images.                              ===== -->
+    <!-- ======                                                      ===== -->
+    <!-- ================================================================= -->
+
+
+    <!-- ================================================================= -->
+    <!-- ======                    Background image                  ===== -->
+    <!-- ================================================================= -->
+    <!-- http://www.publicdomainpictures.net/pictures/170000/velka/caves-background-12.jpg -->
+    <ImageView
+        android:id="@+id/iv_background"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="0dp"
+        android:contentDescription="@string/background_image_description"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_image_to_action_seperator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_names"
+        app:srcCompat="@drawable/cave" />
+
+    <!-- ================================================================= -->
+    <!-- ======                     Image of self                    ===== -->
+    <!-- ================================================================= -->
+    <!-- https://www.goodfreephotos.com/svgfiles/final1395-Colibri-single-color.svg -->
+    <ImageView
+        android:id="@+id/iv_self_image"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="0dp"
+        android:contentDescription="@string/myself_image_description"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_self_health"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_half_screen"
+        app:layout_constraintStart_toStartOf="@+id/iv_background"
+        app:layout_constraintTop_toBottomOf="@+id/ll_names"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <!-- ================================================================= -->
+    <!-- ======                    Image of opponent                 ===== -->
+    <!-- ================================================================= -->
+    <!-- https://www.goodfreephotos.com/svgfiles/final518-grey-wolf-silhouette.svg -->
+    <ImageView
+        android:id="@+id/iv_opponent_image"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="0dp"
+        android:contentDescription="@string/opponent_image_description"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_opponent_health"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background"
+        app:layout_constraintStart_toStartOf="@+id/guideline_half_screen"
+        app:layout_constraintTop_toBottomOf="@+id/ll_names"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <!-- ================================================================= -->
+    <!-- ====== / /                                              \ \ ===== -->
+    <!-- ======                    MONSTER STATUS                    ===== -->
+    <!-- ====== \ \                                              / / ===== -->
+    <!-- ================================================================= -->
+    <!-- ======  Displays the status of myself and the opponent.     ===== -->
+    <!-- ======  This includes health, power and mana.               ===== -->
+    <!-- ======                                                      ===== -->
+    <!-- ======  At this moment only health is implemented.          ===== -->
+    <!-- ======  TODO: implement other status                        ===== -->
+    <!-- ================================================================= -->
+
+
+    <!-- ================================================================= -->
+    <!-- ======                    Status of myself                  ===== -->
+    <!-- ================================================================= -->
+
+                                <!-- Health status -->
+    <TextView
+        android:id="@+id/tv_self_health"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        tools:text="HP: ????/????"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toTopOf="@+id/btn_action01"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_half_screen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="1.0" />
+
+                                <!-- Power status -->
+
+                                <!-- Mana status -->
+
+    <!-- ================================================================= -->
+    <!-- ======                   Status of opponent                 ===== -->
+    <!-- ================================================================= -->
+
+                                <!-- Health status -->
+    <TextView
+        android:id="@+id/tv_opponent_health"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toTopOf="@+id/btn_action02"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_half_screen"
+        app:layout_constraintTop_toBottomOf="@+id/ll_names"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="HP: ????/????" />
+
+                                <!-- Power status -->
+
+                                <!-- Mana status -->
+
+    <!-- ================================================================= -->
+    <!-- ====== / /                                              \ \ ===== -->
+    <!-- ======                    MONSTER ACTIONS                   ===== -->
+    <!-- ====== \ \                                              / / ===== -->
+    <!-- ================================================================= -->
+    <!-- ======  The monster (myself) can perform actions in form    ===== -->
+    <!-- ======  of attacks. Four attacks in form of buttons are     ===== -->
+    <!-- ======  available.                                          ===== -->
+    <!-- ======                                                      ===== -->
+    <!-- ================================================================= -->
+
+    <Button
+        android:id="@+id/btn_action01"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="inflictDamage"
+        tools:text="Attack 1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_action03"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_half_screen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_image_to_action_seperator" />
+
+    <Button
+        android:id="@+id/btn_action02"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="inflictDamage"
+        tools:text="Attack 2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_action04"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_half_screen"
+        app:layout_constraintTop_toTopOf="@+id/guideline_image_to_action_seperator" />
+
+    <Button
+        android:id="@+id/btn_action03"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="inflictDamage"
+        tools:text="Attack 3"
+        app:layout_constraintBottom_toTopOf="@+id/btn_inventory"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_half_screen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_action01" />
+
+    <Button
+        android:id="@+id/btn_action04"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="inflictDamage"
+        tools:text="Attack 4"
+        app:layout_constraintBottom_toTopOf="@+id/btn_leave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_half_screen"
+        app:layout_constraintTop_toBottomOf="@+id/btn_action02" />
+
+    <!-- ================================================================= -->
+    <!-- ====== / /                                              \ \ ===== -->
+    <!-- ======                     OTHER ACTIONS                    ===== -->
+    <!-- ====== \ \                                              / / ===== -->
+    <!-- ================================================================= -->
+    <!-- ======  As other actions are only two options available.    ===== -->
+    <!-- ======                                                      ===== -->
+    <!-- ======  Inventory: open the inventory for potions,          ===== -->
+    <!-- ======             spells,...                               ===== -->
+    <!-- ======  Leave: run (fly) away from the fight.               ===== -->
+    <!-- ======                                                      ===== -->
+    <!-- ================================================================= -->
+
+    <Button
+        android:id="@+id/btn_inventory"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/inventory"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_half_screen"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="open_inventory"/>
+
+    <Button
+        android:id="@+id/btn_leave"
+        android:layout_width="@dimen/responsive_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/leave"
+        android:onClick="leave_fight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_inventory" />
+
+
+</android.support.constraint.ConstraintLayout>

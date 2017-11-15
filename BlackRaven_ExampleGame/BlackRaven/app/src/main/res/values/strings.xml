@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Black Raven</string>
+    <string name="background_image_description">Background image</string>
+    <string name="myself_image_description">Image of myself (Monster)</string>
+    <string name="opponent_image_description">Image of opponent</string>
+    <string name="inventory">Inventory</string>
+    <string name="leave">Leave</string>
+    <string name="mock_fight">Enter mock fight</string>
+    <string name="open_inventory">Open inventory</string>
+    <string name="close_inventory">Close inventory</string>
+    <string name="genre_background_description">Background image for genre</string>
+    <string name="item_image_description">An image of the item</string>
+
+    <string name="health_display">HP: %1$d/%2$d</string>
+    <string name="attack_display">%1$s (%2$d/%3$d)</string>
+</resources>

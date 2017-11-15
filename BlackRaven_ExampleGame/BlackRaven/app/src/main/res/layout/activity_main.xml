@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    android:columnCount="2"
+    tools:context="com.goldencrow.android.blackraven.MainActivity">
+
+    <!-- ================================================================= -->
+    <!-- ======  This screen will be replaced in the future with     ===== -->
+    <!-- ======  a map where one can encounter monsters.             ===== -->
+    <!-- ======                                                      ===== -->
+    <!-- ================================================================= -->
+
+    <Button
+        android:id="@+id/btn_enter_mock_fight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/mock_fight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="enter_mock_fight"/>
+
+    <Button
+        android:id="@+id/btn_open_inventory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/open_inventory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_enter_mock_fight"
+        android:onClick="open_inventory"/>
+
+</android.support.constraint.ConstraintLayout>
